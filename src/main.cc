@@ -26,8 +26,16 @@ int main(int argc, char ** argv) {
   char op;
   unsigned long long int address;
   unsigned long long int temp_address;
+  unsigned long long int refAddress;
   unsigned int bytesize;
   unsigned long long int end_address;
+  unsigned long long L1tag;
+  unsigned long L1index;
+  unsigned long long L2tag;
+  unsigned long L2index;
+
+
+
 
   Data data = simulator(params);
 
@@ -45,12 +53,20 @@ int main(int argc, char ** argv) {
       }
 
       end_address = address + (bytesize-1);
-      temp_address = address & (0x3);
+      temp_address = address & ~(0x3);
+
       do{
         temp_address = temp_address + 4;
+
         switch(op){
           case 'I':
-            L1tag = 
+//---------------------------------Important--------------------------//
+
+          //idea: read from each config file,it will tells how many bits needed to
+          //shift to read out the index bits and the tag bits
+          //Tag shift
+            L1tag = temp_address >> L1config.tagShift;
+            L1index = 
 
           case 'R':
             //call L1_d read function
@@ -70,6 +86,9 @@ int main(int argc, char ** argv) {
 
 
   }
+
+
+
 
 
   output(params, data);
