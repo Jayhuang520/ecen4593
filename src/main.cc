@@ -66,23 +66,32 @@ int main(int argc, char ** argv) {
           //shift to read out the index bits and the tag bits
           //Tag shift
             L1tag = temp_address >> L1config.tagShift;
-            L1index = 
+            L1index = (temp_address & L1config.IndexMask) >> L1config.indexShift;
+
+            L2tag = temp_address >> L2config.tagShift;
+            L2index = (temp_address & L2config.IndexMask) >> L1config.indexShift;
+
+            L1i_read(L1tag,L1index,L2tag,L2index);
 
           case 'R':
             //call L1_d read function
-            L1tag =
+            L1tag = temp_address >> L1config.tagShift;
+            L1index = (temp_address & L1config.IndexMask) >> L1config.indexShift;
+
+            L2tag = temp_address >> L2config.tagShift;
+            L2index = (temp_address & L2config.IndexMask) >> L1config.indexShift;
 
 
           case 'W':
+          L1tag = temp_address >> L1config.tagShift;
+          L1index = (temp_address & L1config.IndexMask) >> L1config.indexShift;
 
-
-
+          L2tag = temp_address >> L2config.tagShift;
+          L2index = (temp_address & L2config.IndexMask) >> L1config.indexShift;
 
         }
 
-
-
-      }while(temp_address<end_address)
+      }while(temp_address < end_address)
 
 
   }

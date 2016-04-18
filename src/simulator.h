@@ -14,7 +14,7 @@
 
 class Node{
 private:
-  bool _dirty;
+  //bool _dirty;
   unsigned long long int _address;
   Node *next;
   Node *prev;
@@ -29,8 +29,8 @@ public:
     Node* getPrev();
     unsigned longlong getAdd();
     void setAddress(unsigned long long int ADDRESS);
-    void setDirty(bool DIRTY);
-    bool getDirty();
+    //void setDirty(bool DIRTY);
+    //bool getDirty();
 };
 
 class DoulyLinkedList{
