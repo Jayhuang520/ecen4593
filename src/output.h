@@ -11,4 +11,4 @@
 
 void help();
 
-void output(Config params, Data data);
+//void output(Config params, Data data);

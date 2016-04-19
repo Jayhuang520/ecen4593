@@ -14,26 +14,63 @@
 
 class Node{
 private:
-  //bool _dirty;
-  unsigned long long int _address;
+  int dirty;
+  unsigned long long int address;
   Node *next;
   Node *prev;
 
 public:
-    Node();
+
     Node(unsigned long long int Address);
 
     void setNext(Node *Next);
     Node* getNext();
+
+
     void setPrev(Node *Prev);
     Node* getPrev();
     unsigned longlong getAdd();
-    void setAddress(unsigned long long int ADDRESS);
-    //void setDirty(bool DIRTY);
-    //bool getDirty();
+    void setAddress(unsigned long long int Address);
+    void setDirty(int DIRTY);
+    int getDirty();
 };
 
-class DoulyLinkedList{
+Node::Node(unsigned long long int Address){
+  prev = 0;
+  next = 0;
+  dirty = 0;
+  address = Address;
+};
+
+void Node::setNext(Node *Next){
+  next = Next;
+};
+Node* Node::getNext(){
+  return next;
+};
+
+
+void Node::setPrev(Node *Prev){
+  prev = Prev;
+};
+
+Node* Node::getPrev(){
+  return Prev;
+};
+
+unsigned longlong int Node::getAdd(){
+      return Address;
+};
+
+void setDirty(int DIRTY){
+  dirty = DIRTY;
+};
+int getDirty(){
+  return dirty;
+};
+
+
+class DoublyLinkedList{
 private:
   Node *head;
   Node *tail;
@@ -41,14 +78,13 @@ private:
   unsigned int MaxSize;
 
 public:
-    DoublyLinkedList();
-    DoublyLinkedList(unsigned int Max);
+    DoublyLinkedList(unsigned int maxsize);
     ~DoublyLinkedList();
-    void moveToHead(Node * usedNode);
-    void addNode(unsigned long long int ADDRESS);
+    void MoveHead(Node * oldNode);
+    void AddNode(unsigned long long int Address);
     bool isEmpty();
     bool isFull();
-    Node* findNode(unsigned long long int ADDRESS);
+    Node* findNode(unsigned long long int Address);
     void cutNode(Node * cutMe);
     void pasteNode(Node * pasteMe);
     void deleteNode(Node * deleteMe);
@@ -56,11 +92,37 @@ public:
     Node* getTail();
 };
 
+DoublyLinkedList::DoublyLinkedList(unsigned int maxsize){
+  maxsize = 0;
+  head = 0;
+  tail = 0;
+};
 
-  struct L1_Data_config{
-  }
+DoublyLinkedList::~DoublyLinkedList(){
+    Node *curr;
+    Node *temp;
+    curr = head;
+    while(curr!=NULL){
+      temp = curr->getNext;
+      delete curr;
+      curr = temp;
+    }
+};
 
-Data simulator(Config params);
+void DoublyLinkedList::MoveHead(Node* oldNode){
+  
+};
+
+void DoublyLinkedList::AddNode(unsigned long long int Address)
+
+bool Node::isEmpty(){
+
+}
+
+  //struct L1_Data_config{
+  //};
+
+//Data simulator(Config params);
 
 unsigned long long execute_time= 0;
 unsigned long long read = 0;

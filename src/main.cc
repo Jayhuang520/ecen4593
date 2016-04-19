@@ -19,6 +19,12 @@ using namespace std;
 #include "output.h"
 
 
+void L1d_read(uint64_t tag,uint32_t index, uint64_t L2_tag,uint32_t L2_index){
+  int i = 0;
+  L1d_req ++ ;
+
+
+}
 
 int main(int argc, char ** argv) {
 
@@ -37,7 +43,7 @@ int main(int argc, char ** argv) {
 
 
 
-  Data data = simulator(params);
+  //Data data = simulator(params);
 
   while(scanf("%c %Lx %d\n",&op,&address,&bytesize)==3){
       switch(op){
@@ -65,6 +71,7 @@ int main(int argc, char ** argv) {
           //idea: read from each config file,it will tells how many bits needed to
           //shift to read out the index bits and the tag bits
           //Tag shift
+
             L1tag = temp_address >> L1config.tagShift;
             L1index = (temp_address & L1config.IndexMask) >> L1config.indexShift;
 
@@ -100,7 +107,11 @@ int main(int argc, char ** argv) {
 
 
 
-  output(params, data);
+
+
+
+
+  //output(params, data);
 
   return 0;
 }
