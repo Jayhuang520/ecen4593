@@ -3,65 +3,88 @@
 #include "config.h"
 #endif
 
-#ifndef CACHE_H
-#define CACHE_H
-#include "cache.h"
-#endif
 
-struct Data {
+/*class Data {
+  public:
+    int Reads;
+    int Writes;
+    int Instructions;
+}
+*/
 
-  unsigned long long int executeTime;
 
-/*Refs*/
-  unsigned long int totalRefs;
+class Node{
+private:
+  //bool _dirty;
+  unsigned long long int _address;
+  Node *next;
+  Node *prev;
 
-  unsigned long int readRefs;
-  unsigned long int writeRefs;
-  unsigned long int instructionRefs;
+public:
+    Node();
+    Node(unsigned long long int Address);
 
-/*Cycles*/
-  unsigned long long int totalCycles;
-
-  unsigned long long int readCycles; 
-  unsigned long long int writeCycles; 
-  unsigned long long int instructionCycles;
-
-/*Ideal*/
-  unsigned long long int idealTime;
-  unsigned long long int idealMisAlignedTime;
-
- /*L1 Icache*/ 
-  unsigned long int l1iTotalRequests;
-
-  unsigned long int l1iHitCount;
-  unsigned long int l1iMissCount;
-
-  unsigned long int l1iKickouts;
-  unsigned long int l1iDirtyKickouts;
-  unsigned long int l1iTransfers;
-  unsigned long int l1iVCHitCount;
-
- /*L1 Dcache*/ 
-  unsigned long int l1dTotalRequests;
-
-  unsigned long int l1dHitCount;
-  unsigned long int l1dMissCount;
-
-  unsigned long int l1dKickouts;
-  unsigned long int l1dDirtyKickouts;
-  unsigned long int l1dTransfers;
-  unsigned long int l1dVCHitCount;
-
- /*L2 cache*/ 
-  unsigned long int l2TotalRequests;
-
-  unsigned long int l2HitCount;
-  unsigned long int l2MissCount;
-
-  unsigned long int l2Kickouts;
-  unsigned long int l2DirtyKickouts;
-  unsigned long int l2Transfers;
-  unsigned long int l2VCHitCount;
+    void setNext(Node *Next);
+    Node* getNext();
+    void setPrev(Node *Prev);
+    Node* getPrev();
+    unsigned longlong getAdd();
+    void setAddress(unsigned long long int ADDRESS);
+    //void setDirty(bool DIRTY);
+    //bool getDirty();
 };
 
+class DoulyLinkedList{
+private:
+  Node *head;
+  Node *tail;
+  unsigned int Length;
+  unsigned int MaxSize;
+
+public:
+    DoublyLinkedList();
+    DoublyLinkedList(unsigned int Max);
+    ~DoublyLinkedList();
+    void moveToHead(Node * usedNode);
+    void addNode(unsigned long long int ADDRESS);
+    bool isEmpty();
+    bool isFull();
+    Node* findNode(unsigned long long int ADDRESS);
+    void cutNode(Node * cutMe);
+    void pasteNode(Node * pasteMe);
+    void deleteNode(Node * deleteMe);
+    Node* getHead();
+    Node* getTail();
+};
+
+
+  struct L1_Data_config{
+  }
+
 Data simulator(Config params);
+
+unsigned long long execute_time= 0;
+unsigned long long read = 0;
+unsigned long long write = 0;
+unsigned long long inst = 0;
+
+unsigned long long last_time = 0;
+unsigned long long read_time = 0;
+unsigned long long write_time = 0;
+unsigned long long inst_time = 0;
+unsigned long long tot_refs = 0;
+
+unsigned long long L1i_req = 0;
+unsigned long long L1i_hit = 0;
+unsigned long long L1i_kickout = 0;
+unsigned long long L1i_dkickout = 0;
+
+unsigned long long L1d_req = 0;
+unsigned long long L1d_hit = 0;
+unsigned long long L1d_kickout = 0;
+unsigned long long L1d_dkickout = 0;
+
+unsigned long long L2_req = 0;
+unsigned long long L2_hit = 0;
+unsigned long long L2_kickout = 0;
+unsigned long long L2_dkickout = 0;
