@@ -42,6 +42,7 @@ Raw data
 Printout
 
 ##TODO
+<<<<<<< HEAD
 - [ ] Unit Testing Framework
 - [ ] Module Parameters
 - [ ] Data Output Module
@@ -49,3 +50,12 @@ Printout
 - [ ] Memory Config Module
 - [ ] Simulator Module
 - [ ] Tracker Module
+=======
+-[ ] Unit Testing Framework
+-[ ] Module Parameters
+-[ ] Data Output Module
+-[ ] Trace Parser Module
+-[ ] Memory Config Module
+-[ ] Simulator Module
+-[ ] Tracker Module
+>>>>>>> jay

@@ -1,0 +1,61 @@
+#include <csstdlib>
+#include <stdio.h>
+#include <stdint.h>
+#include <math>
+
+using namespace std;
+FILE *fp;
+
+
+
+//writing the output file
+fp = fopen("L1-2ways.txt","w");
+fprint("-----------------------------------------------------------------\n" );
+fprintf("%s           Simulation Results\n" );
+fprintf("------------------------------------------------------------------\n\n");
+fprint("Memory system:");
+fprintf("   Dcache size = %i : ways = %i : block size = 32\n");
+fprintf("   Icache size = %i : ways = %i : block size = 32\n");
+fprintf("   L2cache size = %i : ways = %i : block size = 32\n");
+fprintf("   Memory ready time = 50 : chunksize = %i : chunktime = \n\n");
+
+fprintf("Execution time = %llu;    Total refs = %llu\n");
+fprintf("Inst refs = %llu;    Data refs = %llu\n");
+
+float rwi = read + write + inst;
+float p_read = (float) (read)/rwi;
+float p_write = (float) (write)/rwi;
+float p_inst = (float) (inst)/rwi;
+
+
+
+fprintf("Number of reference types: [percentage]]\n");
+fprintf(" Reads = %llu [%.2f%%]\n");
+fprintf(" Wrties = %llu [%.2f%%]\n");
+fprintf(" Inst. = %llu [%.2f%%]\n");
+fprintf(" Total = %llu \n\n");
+
+float pt_read = (float) read_time / (float) execute_time;
+float pt_write = (float) write_time / (float) execute_time;
+float pt_inst = (float) inst_time / (float) execute_time;
+
+
+fprintf("Total cycles for activities:  [Percentage]\n");
+fprintf("	Reads  = %llu	[%.2f%%]\n", read_time,(float) (100*pt_read));
+fprintf("		Writes = %llu	[%.2f%%]\n", write_time,(float) (100*pt_write));
+fprintf("		Inst.  = %llu	[%.2f%%]\n", inst_time,(float) (100*pt_inst));
+fprintf("		Total  = %llu\n\n", execute_time);
+
+float read_cycles = ((float) (read_time)/ (float) (read));
+float write_cycles = ((float) (write_time)/ (float) (write));
+float inst_cycles = ((float) (inst_time)/ (float) (inst));
+float CPI = (float) (read+write+inst+inst)/ (float) (inst);
+
+fprintf("CPI = %i"); //i am not sure what this cpi is printing out
+fprint("Ideal: Exec. Time = %llu; CPI = %.2f\n");
+fprintf("Ideal mis-aligned: )
+
+
+
+
+fclose(fprint, "%s\n)
